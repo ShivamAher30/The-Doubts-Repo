@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<%-include('head') %>
+
+    <body>
+        <%-include('nav')%>
+        <% if (locals.blog) { %>
+            <div class="container">
+              <div style="margin-top: 10px; display: flex;justify-content:center;border: 2px solid slategrey;color: white; background-color: rgb(2, 2, 2);font-size: 30px;border-radius: 6px;"><%= blog.title %> | <%= blog.subject %> </div>
+              <img src="<%= blog.CoverImageURL %>" style="height: fit-content; width: 70vw; scale: 0.7;">
+              <form action="/blog/comment/<%= blog._id %>" method="post" enctype="multipart/form-data" style="border: 2px solid white;">
+                <div class="mb-3 mt-3">
+                  <input
+                    type="text"
+                    name="comment"
+                    class="form-control"
+                    placeholder="Enter your comment"
+                  />
+                  <div class="custom-file">
+                    <label for="exampleFormControlTextarea1">Choose supporting file for your doubt </label>
+                    <input type="file" class="custom-file-input" id="customFile" name="filename">
+                    <label class="custom-file-label" for="customFile" name="filename">Choose file</label>
+                  </div>
+                  <button class="btn btn-sm btn-primary" type="submit" style="margin: 4px;">Add</button>
+                </div>
+              </form>
+            </div>
+          <% } %>
+          
+          <% if (locals.comment) { %>
+            <div class="container">
+              <% locals.comment.forEach(comment => { %>
+                <div class="content">
+                  <% if (comment.createdBy.role == "ADMIN") { %>
+                    <div class="container" style="border: 2px solid rgb(240, 146, 14); margin: 3px; border-radius: 9px;">
+                      <h5><%= comment.createdBy.fullname %> ⭐</h5>
+                      <% if (comment.CommentURL != "none") { %>
+                        <img src="<%- comment.CommentURL %>" height="300px" width="200px" class="img-fluid" style="border-radius: 9px;">
+                      <% } %>
+                      <h6><%- comment.content %></h6>
+                    </div>
+                  <% } else { %>
+                    <div class="container" style="border: 1.1px solid grey; margin: 3px;">
+                      <h5><%= comment.createdBy.fullname %></h5>
+                      <% if (comment.CommentURL != "none") { %>
+                        <img src="<%- comment.CommentURL %>" height="300px" width="200px" class="img-fluid" style="border-radius: 9px;">
+                      <% } %>
+                      <h6><%- comment.content %></h6>
+                    </div>
+                  <% } %>
+                </div>
+              <% }); %>
+            </div>
+          <% } %>
+          
+        
+
+        <%-include('script') %>
+
+    </body>
+
+</html>

@@ -1,0 +1,74 @@
+<nav class="navbar  navbar-dark bg-dark navbar-expand-lg ">
+  <a class="navbar-brand" href="#">The Doubts</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/">Trending</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/blog/add-blog">Post a doubt</a>
+      </li>
+      <% if (locals.user) { %>
+        <li class="nav-item dropdown" ">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%=user.fullname%>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+            <a class="dropdown-item" href="#"></a>
+            <a  class="dropdown-item" href="/user/logout">Logout</a>
+            
+          </div>
+        </li>
+       
+      <% }else { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/user/signin">Sign IN
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/user/signup">Create Account
+          </a>
+        </li>
+        <!---->
+
+       <%}%>
+       <div class="wrap" style="margin-left: 100px;display: flex; flex-direction: row;">
+        <li class="nav-item">
+          <a class="nav-link" href="/blog/subject/E.Maths" style="color: white;">E.Mathematics</a>
+        
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/blog/subject/Physics" style="color: white;">Physics</a>
+        
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/blog/subject/DSD" style="color: white;">Digital Design</a>
+        
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/blog/subject/DSA" style="color: white;">DSA</a>
+        
+        </li>
+        <form class="form-inline my-2 my-lg-0 " style="margin-left: 25px;">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+       
+      
+    </ul>
+  </div>
+</nav>
+<% if (locals.error) { %>
+  <div class="container">
+    <div class="alert alert-danger" role="alert">
+      Wrong Email or Password !!!
+    </div>
+  </div>
+ 
+<% } %>

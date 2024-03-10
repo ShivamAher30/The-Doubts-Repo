@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<%-include('head') %>
+
+    <body>
+        <%-include('nav')%>
+            <!-- <form action="/blog/" method="post" enctype="multipart/form-data">
+                <div class="container mt-3  ">
+                    <div class="form-group ">
+                        <label for="title">Add Title</label>
+                        <input type="text" class="form-control" id="titleinput" aria-describedby="emailHelp"
+                            placeholder="Enter the title of blog*" name="title">
+                    </div>
+                   
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Explain  your doubt</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                            placeholder="Explain your doubt" name="blogbody"></textarea>
+                    </div>
+                    <div class="custom-file">
+                        <label for="exampleFormControlTextarea1">Choose supporting file for your doubt </label>
+                        <input type="file" class="custom-file-input" id="customFile" name="filename">
+                        <label class="custom-file-label"  for="customFile" name="filename">Choose file</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+
+            </form> -->
+            <form action="/blog/" method="post" enctype="multipart/form-data">
+                <div class="container mt-3">
+                    <div class="form-group">
+                        <label for="title">Add Title</label>
+                        <input type="text" class="form-control" id="titleinput" aria-describedby="emailHelp"
+                            placeholder="Enter the title of blog*" name="title">
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Explain your doubt</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                            placeholder="Explain your doubt" name="blogbody"></textarea>
+                    </div>
+            
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Select an Option</label>
+                        <select class="form-control" id="exampleFormControlSelect1" name="selectedOption">
+                            <option value="DSA">DSA</option>
+                            <option value="E.Maths">E.Maths</option>
+                            <option value="Physics">Physics</option>
+                            <option value="DSD">DSD</option>
+                        </select>
+                    </div>
+            
+                    <div class="custom-file">
+                        <label for="exampleFormControlTextarea1">Choose supporting file for your doubt</label>
+                        <input type="file" class="custom-file-input" id="customFile" name="filename">
+                        <label class="custom-file-label" for="customFile" name="filename">Choose file</label>
+                    </div>
+            
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+            
+
+
+
+            <%-include('script') %>
+
+    </body>
+
+</html>
