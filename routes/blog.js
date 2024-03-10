@@ -36,7 +36,7 @@ router.get("/:id",async (req,res)=>{
 
 })
 router.get("/subject/:id",async(req,res)=>{
-  const Allblogs = await Blog.find({subject:req.params.id})
+  const Allblogs = await Blog.find({subject:req.params.id}).sort({like:-1})
     
     res.render("index",{
         user:req.user,
@@ -85,6 +85,24 @@ router.post("/",upload.single("filename"),async (req,res)=>{
         }
     )
     res.redirect("/");
+
+})
+router.post("/like/:id",async(req,res)=>{
+  let ptr = await Blog.findById(req.params.id)
+  console.log("thisiptr",ptr)
+  ptr.like++;
+  ptr.save()
+  res.redirect("/")
+  console.log("thisiptr",ptr)
+
+})
+router.post("/dislike/:id",async(req,res)=>{
+  let ptr = await Blog.findById(req.params.id)
+  console.log("thisiptr",ptr)
+  ptr.like--;
+  ptr.save()
+  res.redirect("/")
+  console.log("thisiptr",ptr)
 
 })
 module.exports = router;

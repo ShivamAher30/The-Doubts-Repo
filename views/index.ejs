@@ -1,21 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <%-include('./partials/head') %>
+<style>
+    .thumbsstyle
+    {
+        fill: tomato;
+        border: none;
+        background-color: white;
+    }
+    
+    .thumbsstyle:hover
+    {
+        background-color: white;
+        scale: 1.2;
+        cursor:pointer
 
+    }
+    .wraplike
+    {
+        color: black;
+        
+        border-radius: 11px;
+    }
+    .wrappernow
+
+    {
+        margin: 0px;
+        display: flex;
+    }
+
+
+</style>
     <body>
         <%-include('./partials/nav')%>
         <div class="container mt-3" style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
             <% blog.forEach(blog => { %>
-                <div class="card" style="width: 18rem;height: fit-content; width: fit-content; display: flex; justify-content: center; align-items: center;">
+                <div class="card" style="width: 18rem;height: fit-content; width: fit-content; display: flex; justify-content: center; align-items: center;margin-top: 30px;">
                     <img class="card-img-top " src="<%= blog.CoverImageURL %>" alt="Card image cap" style="height: 30rem; width: fit-content;">
                     <div class="card-body">
+                        <div class="wrappernow">
+                            <form method="post" action="/blog/like/<%= blog._id %>">
+                                
+                                <div class="wraplike">
+                                    <input type="hidden" name="userId"/> 
+                                    <% if (blog.like != 0) { %>
+                                        <%= blog.like %>
+                                     
+                                    <% } %>
+                                    <button type="submit" class="material-symbols-outlined thumbsstyle" style="margin-left: 2px;color: tomato;">
+                                        thumb_up
+                                    </button>
+                                </div>
+                                    
+                                
+                                
+                                
+                            </form>
+                            <form method="post" action="/blog/dislike/<%= blog._id %>">
+                                <input type="hidden" name="userId"/> 
+                                <input type="hidden" name="postId" >
+                                <div class="wraplike">
+                                    <button type="submit" class="material-symbols-outlined thumbsstyle" style="margin-left: 2px;color: tomato;">
+                                        thumb_down
+                                    </button>
+                                </div>
+                                    
+                                
+                                
+                                
+                            </form>
+                        </div>
+                        
+                        
+                            
+                        
+                        
+                        
                         <h5 class="card-title"><%= blog.title %> | <%= blog.subject %></h5>
                         <a href="/blog/<%=blog._id%>" class="btn btn-primary">Show More</a>
+                        <script src="/controllers/likecount.js"></script>
                     </div>
                 </div>
             <% }); %>
         </div>
-        
 
         <%-include('./partials/script') %>
 

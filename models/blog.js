@@ -19,6 +19,18 @@ const blogschema = new Schema({
     subject:{
         type:String,
         enum: ["DSA", "E.Maths","Physics","DSD"],
+    },
+    like:
+    {
+        type:Number,
+        default:0,
+        
+    },
+    dislike:
+    {
+        type:Number,
+        default:0,
+
     }
 },
     {timestamps:true,strictPopulate:false}

@@ -21,12 +21,11 @@ app.use(express.static(path.resolve("./public")))
 app.set("view engine", "ejs")
 app.set("views", path.resolve("./views"))
 app.get("/",async (req,res)=>{
-    const Allblogs = await Blog.find({})
+    const Allblogs = await Blog.find({}).sort({like:-1})
     
     res.render("index",{
         user:req.user,
         blog:Allblogs
-
     })
 })
 
