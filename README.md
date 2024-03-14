@@ -35,7 +35,7 @@ This web app is built on a Node.js backend, employing various frameworks and lib
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/ShivamAher30/The-Doubts-Repo/tree/Subjects-feat  ```
+   git clone https://github.com/ShivamAher30/The-Doubts-Repo/tree/Subjects-feat```
 2. **Install Dependencies **
 ```bash
   npm i
